@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Installs nginx server
+apt-get update
+apt-get -y install nginx
+
+#configuring the server
+mkdir etc/nginx/html
+
+#creating Server Block files
+
