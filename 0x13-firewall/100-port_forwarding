@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# To Install the ufw firewall
+sudo apt-get update
+sudo apt-get install ufw
+
+# To Set the default incoming policy to deny
+sudo ufw default deny incoming
+
+# To Allow SSH (port 22)
+sudo ufw allow 22/tcp
+
+# To Allow HTTPS (port 443)
+sudo ufw allow 443/tcp
+
+# To Allow HTTP (port 80)
+sudo ufw allow 80/tcp
+
+# Edit the before.rules file to redirect port 8080 to 80
+sudo sed -i 's/# net\/ipv4\/ip_forward=1/net\/ipv4\/ip_forward=1/' /etc/ufw/sysctl.conf
+sudo bash -c "echo '*nat\n:PREROUTING ACCEPT [0:0]\n
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80\n
+COMMIT' > /etc/ufw/before.rules"
+
+#Enable the firewall
+#sudo ufw enable
