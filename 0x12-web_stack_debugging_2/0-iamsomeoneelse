@@ -1,5 +1,4 @@
-#!/bin/env bash
-
+#!/usr/bin/env bash
 # Check if an argument was provided
 if [ -z "$1" ]
 then

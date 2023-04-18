@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# stop nginx if it is running
+sudo service nginx stop
+
+# set ownership of nginx directories to nginx user and group
+sudo chown -R nginx:nginx /var/log/nginx /var/lib/nginx /etc/nginx
+
+# update nginx.conf to run as nginx user
+sudo sed -i 's/user  nginx;/user nginx nginx;/g' /etc/nginx/nginx.conf
+
+# start nginx service
+sudo service nginx start
