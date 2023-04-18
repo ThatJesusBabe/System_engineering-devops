@@ -5,6 +5,5 @@ then
     echo "Error: No user argument provided."
     exit 1
 fi
-
 # Run the 'whoami' command under the user specified in the argument
-su - "$1" -c "whoami"
+sudo -u "$1" whoami

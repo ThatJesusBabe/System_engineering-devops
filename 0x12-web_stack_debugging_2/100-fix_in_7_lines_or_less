@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# To make the code fr task 1 shorter and sweet
-service nginx stop
-chown -R nginx:nginx /var/log/nginx /var/lib/nginx /etc/nginx
-sed -i 's/user  nginx;/user nginx nginx;/g' /etc/nginx/nginx.conf
-service nginx start
+#comment
+sudo sed -i 's/user www-data/user nginx/' /etc/nginx/nginx.conf
+sudo sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+chmod 640 /etc/nginx/nginx.conf
+pkill apache2
+sudo -u nginx service nginx start
