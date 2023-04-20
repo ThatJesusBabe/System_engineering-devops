@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+string_for_replacement="[mysqld]\n\t
+	server-id = 2\n\t
+	relay_log = /var/log/mysql/mysql-relay-bin.log\n\t
+	log_bin = /var/log/mysql/mysql-bin.log\n\t
+	binlog_do_db = tyrell_corp"\n\t
+sudo sed -i "s/[mysqld]/$string_for_replacement/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo systemctl restart mysql
